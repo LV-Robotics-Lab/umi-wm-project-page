@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'none'; img-src 'self' data:; media-src 'self'; style-src 'self'; font-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UMI-WM: Interactive World Modeling for Bimanual Manipulation from Wrist Cameras. Project page, paper, results, and demonstrations.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.lv-lab.org/umi-wm/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UMI-WM: Interactive World Modeling for Bimanual Manipulation from Wrist Cameras">
+  <meta property="og:url" content="https://www.lv-lab.org/umi-wm/">
+  <meta property="og:image" content="https://lv-robotics-lab.github.io/umi-wm-project-page/assets/overview.webp">
+  <meta property="og:description" content="An action-conditioned bimanual world model that jointly generates both wrist views.">
+  <meta name="referrer" content="no-referrer">
+  <title>UMI-WM: Interactive World Modeling for Bimanual Manipulation from Wrist Cameras</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/css/fonts.css">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/academic-template.css">
+  <link rel="stylesheet" href="static/css/project.css?v=public-1">
+</head>
+<body>
+<a class="skip-link" href="#abstract">Skip to content</a>
+<nav class="navbar is-transparent" aria-label="Page navigation">
+  <div class="navbar-menu is-active">
+    <div class="navbar-start">
+      <a class="navbar-item" href="https://www.lv-lab.org/">LV-Lab</a>
+      <a class="navbar-item" href="#overview-video">Video</a>
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#comparison">Results</a>
+      <a class="navbar-item" href="#method">Method</a>
+      <a class="navbar-item" href="#data">Data</a>
+      <a class="navbar-item" href="#appendix">Appendix</a>
+    </div>
+  </div>
+</nav>
+<main>
+<section class="hero publication-header">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="title-line"><span class="project-name">UMI-WM</span>: Interactive World Modeling for</span> <span class="title-line">Bimanual Manipulation from Wrist Cameras</span></h1>
+          <div class="is-size-5 publication-authors"><div class="author-row"><span class="author-block">Jingxiang Guo<sup>1</sup></span><span class="author-block">Haoyu Zhao<sup>1</sup></span><span class="author-block">Xidong Zhang<sup>2</sup></span><span class="author-block">Yuhang Zheng<sup>1</sup></span><span class="author-block">Hao Wu<sup>1</sup></span></div><div class="author-row"><span class="author-block">Chen Gao<sup>1,†</sup></span><span class="author-block">Jianshu Zhou<sup>1,†</sup></span><span class="author-block">Shuicheng Yan<sup>1,†</sup></span><span class="author-block">Weihao Yuan<sup>3,†</sup></span></div></div>
+          <div class="publication-affiliations"><span><sup>1</sup>National University of Singapore</span><span><sup>2</sup>Harbin Institute of Technology</span><span><sup>3</sup>Nanjing University</span></div>
+          <p class="publication-contact"><a href="mailto:jingxiangguo@u.nus.edu">jingxiangguo@u.nus.edu</a> · <sup>†</sup>Corresponding authors</p>
+          <div class="publication-links">
+            <span class="link-block"><a class="button is-normal is-rounded is-dark" href="#overview-video"><span class="icon" aria-hidden="true">▶</span><span>Watch Overview</span></a></span>
+            <span class="link-block"><a class="button is-normal is-rounded is-dark" href="#comparison"><span class="icon" aria-hidden="true">▶</span><span>Video Results</span></a></span>
+            <span class="link-block"><a class="button is-normal is-rounded is-dark" href="#appendix"><span class="icon" aria-hidden="true">▶</span><span>Robot Execution</span></a></span>
+            <span class="link-block"><a class="button is-normal is-rounded is-dark" href="#method"><span>Method Overview</span></a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section overview-video-section" id="overview-video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Paper Overview</h2>
+    <figure class="overview-video-figure">
+      <video controls playsinline preload="metadata" width="1920" height="1080" poster="assets/paper-overview-v2.jpg" aria-label="UMI-WM paper overview with English narration and single-line captions"><source src="assets/paper-overview-v5.mp4" type="video/mp4"><a href="assets/paper-overview-v5.mp4">Download the paper overview video.</a></video>
+    </figure>
+  </div>
+</section>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img src="assets/overview.webp" width="2400" height="1350" alt="UMI-WM uses wrist observation history, camera poses, and gripper widths to generate paired wrist videos for teleoperation and action recovery.">
+        <figcaption class="subtitle has-text-centered"><span class="dnerf">UMI-WM</span> jointly predicts both wrist views from per-arm camera poses and gripper widths.<br class="desktop-break"> An inverse dynamics model recovers actions for evaluation and robot execution.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section class="section hero is-light" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified"><p>Universal Manipulation Interface (UMI) pairs wrist-camera videos with camera trajectories and gripper openings, providing scalable, robot-free data for learning how bimanual actions change a shared scene. Existing interactive world models, however, typically rely on text or single-camera control and struggle to follow each arm&#x27;s actions while maintaining consistency between the two wrist views. We introduce UMI-WM, an action-conditioned bimanual world model that jointly generates both wrist views from observation history, per-arm relative camera poses, and gripper widths, with cross-view consistency, action following, and visual fidelity. UMI-WM injects each arm&#x27;s actions into its own wrist stream, while sparse hub tokens exchange scene information between the two streams. Camera-aware geometry conditioning and camera-guided noise further support per-view motion control and cross-view geometric exchange. We adapt the model for block-causal generation and distill the 30-step Teacher into a Student with four denoising steps. We train UMI-WM on self-collected open-world and in-studio UMI recordings combined with public manipulation data. To evaluate action following, we use an inverse dynamics model (IDM) to recover relative camera poses and gripper widths from generated videos, and introduce Bimanual Action Fidelity (BAF) to measure how closely these recovered actions match the conditioning actions. UMI-WM achieves the best results on all five reference-video fidelity metrics and the best or competitive performance on VBench and WorldArena. The Teacher and Student outperform all compared baselines in action following, while the four-step Student generates paired wrist videos 6.9× faster than the Teacher.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section results-section" id="comparison">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Paired-Wrist Video Predictions</h2>
+    <div class="content intro-copy has-text-centered"><p>Synchronized paired-wrist predictions across five tasks.</p></div>
+    <div class="comparison-picker" role="group" aria-label="Choose a comparison task">
+      <button type="button" class="comparison-choice" aria-pressed="true" aria-controls="comparison-player" data-case="2">Unzipping a backpack</button>
+      <button type="button" class="comparison-choice" aria-pressed="false" aria-controls="comparison-player" data-case="224">Grasping a clear case</button>
+      <button type="button" class="comparison-choice" aria-pressed="false" aria-controls="comparison-player" data-case="14">Placing a case on a notebook</button>
+      <button type="button" class="comparison-choice" aria-pressed="false" aria-controls="comparison-player" data-case="280">Unzipping a pencil pouch</button>
+      <button type="button" class="comparison-choice" aria-pressed="false" aria-controls="comparison-player" data-case="103">Positioning a case by a ruler</button>
+    </div>
+    <figure class="comparison-figure">
+      <video id="comparison-player" controls playsinline muted loop preload="metadata" width="1920" height="1080" poster="assets/comparison-v4-2.jpg" aria-label="Nine-panel paired-wrist comparison: Unzipping a backpack"><source src="assets/comparison-v4-2.mp4" type="video/mp4"><a href="assets/comparison-v4-2.mp4">Download comparison video.</a></video>
+      <figcaption class="has-text-centered" id="comparison-caption" aria-live="polite">Unzipping a backpack</figcaption>
+    </figure>
+    <noscript><p>More comparison videos: <a href="assets/comparison-v4-224.mp4">Clear case</a> · <a href="assets/comparison-v4-14.mp4">Notebook</a> · <a href="assets/comparison-v4-280.mp4">Pencil pouch</a> · <a href="assets/comparison-v4-103.mp4">Ruler</a></p></noscript>
+    <details class="supplement"><summary>Three timestamps from the paper</summary><figure><img loading="lazy" src="assets/comparison.webp" alt="Ground truth, Cosmos, MiniMax-H3, WorldPlay, UMI-WM Teacher and Student compared at 1, 3, and 5 seconds, with paired left and right wrist views."><figcaption>Each row shows one method, with paired-wrist observations at 1, 3, and 5 seconds.</figcaption></figure></details>
+  </div>
+</section>
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Quantitative Results</h2>
+    <div class="content intro-copy"><p>Evaluation uses <strong>320 held-out UMI episodes</strong> with 1,008 paired-wrist windows. The Teacher leads PSNR, LPIPS, FID, and FVD, while the Student leads SSIM. Both variants outperform all compared baselines in Bimanual Action Fidelity (BAF), which measures agreement between conditioning actions and actions recovered from generated videos.</p></div>
+    <div class="table-container" tabindex="0" role="region" aria-label="Quantitative model comparison, scroll horizontally on small screens"><table><caption>Reference-video fidelity and efficiency from Table 1, with Bimanual Action Fidelity from Table 3. Bold / underline mark the best / second-best generated-model results shown.</caption><thead><tr><th scope="col">Model</th><th scope="col">PSNR ↑</th><th scope="col">SSIM ↑</th><th scope="col">LPIPS ↓</th><th scope="col">FID ↓</th><th scope="col">FVD ↓</th><th scope="col">BAF ↑</th><th scope="col">Paired FPS ↑</th></tr></thead><tbody>
+          <tr><td>Wan2.2 TI2V-5B</td><td>8.345</td><td>0.312</td><td>0.715</td><td>99.76</td><td>3477.06</td><td>18.64</td><td>0.18</td></tr>
+          <tr><td>Cosmos Predict2.5</td><td>7.759</td><td>0.308</td><td>0.685</td><td>98.62</td><td>967.40</td><td>17.54</td><td>0.10</td></tr>
+          <tr><td>MiniMax-H3</td><td>9.477</td><td>0.371</td><td>0.577</td><td>58.91</td><td>687.94</td><td>15.20</td><td>0.70</td></tr>
+          <tr><td>Gamma-World ◇</td><td>12.264</td><td>0.548</td><td>0.397</td><td>40.30</td><td>331.25</td><td>52.93</td><td>0.55</td></tr>
+          <tr><td>HY-WorldPlay 5B</td><td>8.599</td><td>0.338</td><td>0.606</td><td>68.15</td><td>638.08</td><td>36.53</td><td>0.81</td></tr>
+          <tr><td>LingBot-World-Fast</td><td>7.660</td><td>0.270</td><td>0.752</td><td>128.16</td><td>2190.36</td><td>24.19</td><td class="best">2.32</td></tr>
+          <tr class="ours"><td>UMI-WM Teacher</td><td class="best">12.513</td><td class="second">0.576</td><td class="best">0.332</td><td class="best">33.52</td><td class="best">232.53</td><td class="best">76.36</td><td>0.26</td></tr>
+          <tr class="ours student"><td>UMI-WM Student</td><td class="second">12.334</td><td class="best">0.580</td><td class="second">0.336</td><td class="second">37.89</td><td class="second">284.68</td><td class="second">71.55</td><td class="second">1.81</td></tr>
+        </tbody></table></div>
+    <p class="table-note">◇ Gamma-World is fine-tuned on the UMI training split. FID and FVD use one selected window per episode. Paired FPS counts synchronized wrist-frame pairs on one A100-80GB GPU. The four-step Student reaches 1.81 paired FPS versus 0.26 for the 30-step Teacher, a 6.9× offline speedup. Scores use two generation seeds and equal episode weights; BAF is an action-agreement score, not a task-success percentage.</p>
+    <div class="supplement pt-5" id="video-quality-results">
+      <h3 class="title is-4">VBench and WorldArena results</h3>
+      <div class="table-container" tabindex="0" role="region" aria-label="VBench and WorldArena model comparison, scroll horizontally on small screens"><table>
+        <caption>All reported VBench and WorldArena metrics from Table 1. Higher is better. GT is an unranked reference; bold / underline indicate the best / second-best generated-model results, including ties.</caption>
+        <thead><tr><th scope="col">Model</th><th scope="col">VBench<br>Subject consistency ↑</th><th scope="col">VBench<br>Background consistency ↑</th><th scope="col">VBench<br>Motion smoothness ↑</th><th scope="col">VBench<br>Imaging quality ↑</th><th scope="col">WorldArena<br>JEPA similarity ↑</th><th scope="col">WorldArena<br>Photometric smoothness ↑</th><th scope="col">WorldArena<br>Perspectivity ↑</th></tr></thead>
+        <tbody><tr><td>GT video</td><td>0.860</td><td>0.926</td><td>0.984</td><td>0.716</td><td>1.000</td><td>3.377</td><td>3.750</td></tr>
+<tr><td>Wan2.2 TI2V-5B</td><td>0.824</td><td>0.903</td><td class="best">0.988</td><td>0.604</td><td>0.059</td><td>1.827</td><td class="best">3.875</td></tr>
+<tr><td>Cosmos Predict2.5</td><td>0.688</td><td>0.850</td><td>0.974</td><td>0.631</td><td>0.284</td><td>1.747</td><td class="second">3.500</td></tr>
+<tr><td>MiniMax-H3</td><td>0.768</td><td>0.874</td><td>0.982</td><td>0.609</td><td>0.080</td><td>1.772</td><td>3.375</td></tr>
+<tr><td>Gamma-World ◇</td><td>0.874</td><td class="second">0.933</td><td class="second">0.984</td><td>0.655</td><td>0.382</td><td>4.236</td><td>3.375</td></tr>
+<tr><td>HY-WorldPlay 5B</td><td>0.825</td><td>0.899</td><td>0.968</td><td class="second">0.705</td><td>0.135</td><td>2.296</td><td>3.250</td></tr>
+<tr><td>LingBot-World-Fast</td><td>0.627</td><td>0.855</td><td>0.958</td><td>0.464</td><td>0.179</td><td>1.669</td><td>3.250</td></tr>
+<tr class="ours"><td>UMI-WM Teacher</td><td class="best">0.885</td><td class="best">0.938</td><td class="second">0.984</td><td class="best">0.707</td><td class="second">0.386</td><td class="best">4.339</td><td class="second">3.500</td></tr>
+<tr class="ours student"><td>UMI-WM Student</td><td class="second">0.875</td><td class="second">0.933</td><td class="second">0.984</td><td>0.655</td><td class="best">0.408</td><td class="second">4.300</td><td>3.125</td></tr></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="content intro-copy"><p><span class="dnerf">UMI-WM</span> jointly predicts both wrist videos from observation history and per-arm actions, represented by relative translation, a 6D rotation representation, and gripper width in 10 dimensions. Each arm’s actions are injected into its own wrist stream. SRAE encodes view, role, and actor identities, while Sparse Hub Attention exchanges scene information through learned hub tokens. CameraNoise supplies motion-aware noise, while CamRay and PRoPE provide camera-aware geometry conditioning for per-view motion control and cross-view geometric exchange. We adapt the model for block-causal generation and distill the 30-step Teacher into a Student with four denoising steps.</p></div>
+    <figure><img loading="lazy" src="assets/method-overview.webp" alt="UMI-WM Teacher and Student architecture, per-arm temporal action encoder, cross-view modules, camera conditioning, and inverse dynamics model."><figcaption class="has-text-centered">The world model maps bimanual actions to paired wrist videos. The IDM separates gripper foreground and scene background to recover camera poses and gripper widths for BAF evaluation and robot execution via inverse kinematics.</figcaption></figure>
+  </div>
+</section>
+<section class="section data-section" id="data">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Data Sources and Processing Pipeline</h2>
+    <div class="content intro-copy"><p>A three-tier data pyramid combines public manipulation data, self-collected open-world UMI recordings, and calibrated in-studio recordings. The pipeline synchronizes wrist videos, camera poses, and gripper states at 30 Hz, expresses each trajectory relative to its window’s first frame, and applies calibration and quality checks. Open-world wrist trajectories remain in separate local frames; in-studio recordings register both wrists in a shared world frame. UMI-WM uses the two wrist views as visual observations.</p></div>
+    <figure class="data-figure">
+      <div class="figure-surface"><img loading="lazy" src="assets/data-pipeline.png" width="6471" height="1613" alt="Self-collected in-studio and open-world UMI demonstrations and public robot data are synchronized, canonicalized, and quality checked."></div>
+    </figure>
+  </div>
+</section>
+<section class="section results-section" id="appendix">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Appendix: Physical Robot Execution</h2>
+    <div class="content intro-copy"><p>After interactive approval of a generated rollout, the IDM recovers wrist-camera poses and gripper widths. A calibrated mapping converts the poses to end-effector targets for inverse kinematics, while the recovered widths drive the grippers. The left panel shows physical robot execution; the right panel shows the corresponding wrist-view preview.</p></div>
+    <figure class="execution-figure">
+      <div class="execution-video">
+        <video controls playsinline preload="metadata" poster="assets/execution-poster-horizontal.webp" aria-label="Physical robot execution on the left and world-model preview on the right"><source src="assets/robot-execution-horizontal.mp4" type="video/mp4"><a href="assets/robot-execution-horizontal.mp4">Download robot demonstration.</a></video>
+        <span class="view-label">Physical execution</span><span class="view-label preview-label">Model preview</span>
+      </div>
+      <figcaption class="has-text-centered">Left: physical robot execution. Right: the corresponding world-model preview.</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="container"><div class="columns is-centered"><div class="column is-8 content has-text-centered">
+    <p><strong>UMI-WM</strong> · <a href="https://github.com/LV-Robotics-Lab">LV Robotics Lab</a></p>
+    <p class="template-credit">Website adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a> and <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
+  </div></div></div>
+</footer>
+<script src="static/js/comparison-v4.js" defer></script>
+</body>
+</html>
